@@ -1,8 +1,5 @@
-bidmanager
+BidManager
 ==========
-
-Django application and crawling backend to collect and manage government bids and rfp'sbid-manager
-===========
 
 A Django based project for managing bids and rfp's
 
