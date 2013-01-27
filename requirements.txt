@@ -1,0 +1,6 @@
+-e git+http://github.com/django/django.git@stable/1.5.x#egg=django
+django-debug-toolbar==0.9.4
+-e git+https://github.com/django/django-localflavor-us.git#egg=django-localflavor-us
+python-dateutil==1.5
+pytz==2012h
+requests==1.0.4
