@@ -1,5 +1,7 @@
 from unipath import Path
 
+AUTH_USER_MODEL = 'profiles.BidsUser'
+
 PROJECT_ROOT = Path(__file__).ancestor(3)
 MEDIA_ROOT = PROJECT_ROOT.child('media')
 STATIC_ROOT = PROJECT_ROOT.child('static')
@@ -105,6 +107,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'profiles',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
