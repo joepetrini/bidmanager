@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block onready %}
+    $("input:text:visible:first").focus();
+{% endblock %}
+{% block content %}
+
+
+<div class="span8 offset 3">
+
+<form action="." method="POST" class="form">{% csrf_token %}
+		<fieldset>
+			<legend>User Login</legend>
+				
+			<label for="username">Username</label>
+			<div class="div_text">
+				<div class="input-prepend">
+				<span class="add-on"><i class="icon-user"></i></span>
+				<input name="log" type="text" id="log inputIcon" value="" class="username span3" />
+				</div>
+
+			</div>
+			
+			<label for="password">Password</label>
+			<div class="div_text">
+				<div class="input-prepend">
+				<span class="add-on"><i class="icon-lock"></i></span>
+				<input name="pwd" type="password" id="pwd inputIcon" class="password span3" />
+				</div>
+
+			</div>
+				
+            
+<div class="button_div">
+                <input name="rememberme" type="checkbox" id="rememberme" value="forever" />&nbsp;Remember me&nbsp;&nbsp;
+			    <input type="submit" name="Submit" value="Login" class="btn btn-primary" />
+			</div>
+
+			<div class="clear"></div>
+			<div align="right">Forgot password?&nbsp;<a href="http://rocketgeek.com/user-settings/?a=pwdreset">Click here to reset</a></div>
+			<div align="right">New User?&nbsp;<a href="http://rocketgeek.com/register/">Click here to register</a></div>	
+			<div class="clear"></div>
+		</fieldset></form>
+		
+</div>
+
+{% endblock %}
