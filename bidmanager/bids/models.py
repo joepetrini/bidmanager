@@ -24,8 +24,8 @@ class BidSource(TimeStampedModel):
     status = StatusField()
     content_hash = models.CharField(max_length=1000)
     enabled = models.BooleanField(default=True)
-    contact_name = models.CharField(max_length=1000, blank=True, null=True)
-    contact_phone = models.CharField(max_length=1000, blank=True, null=True)
+    contact_name = models.CharField(max_length=1000, blank=True)
+    contact_phone = models.CharField(max_length=1000, blank=True)
 
     objects = models.Manager()
 
@@ -52,8 +52,9 @@ class Bid(TimeStampedModel):
     source = models.ForeignKey('BidSource')
     category = models.ForeignKey('Category', blank=True, null=True)
     title = models.CharField(max_length=1000, blank=True)
-    contact_name = models.CharField(max_length=1000, blank=True, null=True)
-    contact_phone = models.CharField(max_length=1000, blank=True, null=True)
+    description = models.TextField(blank=True)
+    contact_name = models.CharField(max_length=1000, blank=True)
+    contact_phone = models.CharField(max_length=1000, blank=True)
     open_date = models.DateTimeField(null=True, blank=True)
     end_date = models.DateTimeField(null=True, blank=True)
     content_hash = models.CharField(max_length=1000, blank=True)

@@ -18,3 +18,7 @@ Sample crawling engines to pull bids in from external sites
 
 ### Sample sites ###
 Sample sites to crawl against
+
+ToDos
+------
+* User alerts (paid service) - sign up for alerts on search

@@ -100,13 +100,22 @@ ROOT_URLCONF = 'bidmanager.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'bidmanager.wsgi.application'
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        'PATH': PROJECT_ROOT.child('whoosh'),
+        #'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
+    },
+}
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'profiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
