@@ -1,17 +1,25 @@
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 from unipath import Path
+#from os.path import join, abspath, dirname
 
 AUTH_USER_MODEL = 'profiles.BidsUser'
 
+#here = lambda *x: join(abspath(dirname(__file__)), *x)
+#PROJECT_ROOT = here("..", "..")
+#root = lambda *x: join(abspath(PROJECT_ROOT), *x)
 PROJECT_ROOT = Path(__file__).ancestor(3)
+#print "PROJECT_ROOT %s " % PROJECT_ROOT
+#MEDIA_ROOT = root("media")
+#STATIC_ROOT = root("static")
 MEDIA_ROOT = PROJECT_ROOT.child('media')
 STATIC_ROOT = PROJECT_ROOT.child('static')
 
-STATICFILES_DIRS = (
-        PROJECT_ROOT.child('assets'),
-        )
+#STATICFILES_DIRS = (
+#    PROJECT_ROOT.child("static"),
+#)
 TEMPLATE_DIRS = (
-        PROJECT_ROOT.child('templates'),
-        )
+    PROJECT_ROOT.child("templates"),
+)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -62,17 +70,17 @@ USE_TZ = True
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://example.com/media/", "http://media.example.com/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#STATICFILES_FINDERS = (
+#    'django.contrib.staticfiles.finders.FileSystemFinder',
+#    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+#)
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'mqx^jv*yh6y9yphp7n9i2)bd61e8y!v0mxutuy#%d4)e9bjb^6'
@@ -103,10 +111,15 @@ WSGI_APPLICATION = 'bidmanager.wsgi.application'
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
+        #'PATH': root('whoosh'),
         'PATH': PROJECT_ROOT.child('whoosh'),
         #'PATH': os.path.join(os.path.dirname(__file__), 'whoosh_index'),
     },
 }
+
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -114,11 +127,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     #'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     'haystack',
     'profiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'bids',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

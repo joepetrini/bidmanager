@@ -1,11 +1,20 @@
 from datetime import datetime
 from django.db import models
+from django.contrib import admin
 from django.utils.timezone import utc
 from django.utils.translation import ugettext as _
 from model_utils import Choices
 from model_utils.fields import StatusField
 from model_utils.models import TimeStampedModel
 from picklefield.fields import PickledObjectField
+
+
+class BidCategory(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
+
+    def __unicode__(self):
+        return self.name
 
 
 class BidSource(TimeStampedModel):
@@ -50,7 +59,7 @@ class Bid(TimeStampedModel):
     orig_id = models.CharField(max_length=1000,
                                help_text="Unique ID from src sys")
     source = models.ForeignKey('BidSource')
-    category = models.ForeignKey('Category', blank=True, null=True)
+    category = models.ForeignKey('BidCategory', blank=True, null=True)
     title = models.CharField(max_length=1000, blank=True)
     description = models.TextField(blank=True)
     contact_name = models.CharField(max_length=1000, blank=True)
@@ -66,3 +75,7 @@ class Bid(TimeStampedModel):
 
     def __unicode__(self):
         return "%s - %s" % (self.source, self.title[:60])
+
+admin.site.register(BidCategory)
+admin.site.register(BidSource)
+admin.site.register(Bid)

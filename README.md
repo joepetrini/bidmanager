@@ -22,3 +22,5 @@ Sample sites to crawl against
 ToDos
 ------
 * User alerts (paid service) - sign up for alerts on search
+* Swappable pay plans (for possible changeing over time)
+** Cheaper yearly vs month to month, M 6M Y signups
