@@ -1,10 +1,32 @@
 [
 {
     "pk": 1, 
+    "model": "bids.frontendsite", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "JerseyBids", 
+        "url": ".jerseybids.",
+        "state": 1,
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{
+    "pk": 1, 
+    "model": "bids.state", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "New Jersey", 
+
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{
+    "pk": 1, 
     "model": "bids.county", 
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Gloucester", 
+        "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     },
     "pk": 2, 
@@ -12,6 +34,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Monmouth", 
+        "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }    
 },

@@ -11,6 +11,8 @@ urlpatterns = patterns('',
                        url(r'^about$', 'bids.views.about', name='about'),
                        url(r'^contact$', 'bids.views.contact', name='contact'),
                        url(r'^how-to$', 'bids.views.howto', name='howto'),
+                       url(r'^search$', 'bids.views.search', name='search'),
+                       url(r'^county/(?P<county_slug>[^\/]+)/[^\/]+/(?<bid_id>[\d]+)', 'bids.views.category', name='category'),
                        # url(r'^bidmanager/', include('bidmanager.foo.urls')),
                        # Uncomment the admin/doc line below to enable admin documentation:
                        # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -23,3 +25,18 @@ if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
     )
+
+
+"""
+Sitemap def
+
+Ordered by frequency - how to provide xlinks from site?
+
+/county/<county_slug>/bid-title(shortened)/id1
+/county/<county_slug>/bid-title(shortened)/id2
+
+/category/bid-title/id1
+
+
+
+"""

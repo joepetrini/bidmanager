@@ -8,11 +8,38 @@ from model_utils.fields import StatusField
 from model_utils.models import TimeStampedModel
 from picklefield.fields import PickledObjectField
 
-class County(TimeStampedModel):
+
+class State(TimeStampedModel):
     name = models.CharField(max_length=100)
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        db_table = 'state'        
+
+
+class FrontendSite(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    url = models.CharField(max_length=50)
+    state = models.ForeignKey('State')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'frontend'
+
+
+class County(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    state = models.ForeignKey('State')
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'county'
 
 
 class BidCategory(TimeStampedModel):
@@ -21,6 +48,9 @@ class BidCategory(TimeStampedModel):
 
     def __unicode__(self):
         return self.name
+
+    class Meta:
+        db_table = 'category'        
 
 
 class BidSource(TimeStampedModel):
@@ -63,6 +93,9 @@ class BidSource(TimeStampedModel):
 
     objects = models.Manager()
 
+    class Meta:
+        db_table = 'source'    
+
     def __unicode__(self):
         return self.name
 
@@ -98,9 +131,14 @@ class Bid(TimeStampedModel):
 
     objects = models.Manager()
 
+    class Meta:
+        db_table = 'bid'
+
     def __unicode__(self):
         return "%s - %s" % (self.source, self.title[:60])
 
+admin.site.register(State)
+admin.site.register(County)
 admin.site.register(BidCategory)
 admin.site.register(BidSource)
 admin.site.register(Bid)
