@@ -1,0 +1,81 @@
+[
+{
+    "pk": 1, 
+    "model": "bids.county", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Gloucester", 
+        "created": "2013-05-22T14:35:49.258Z"
+    },
+    "pk": 2, 
+    "model": "bids.county", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Monmouth", 
+        "created": "2013-05-22T14:35:49.258Z"
+    }    
+},
+{
+    "pk": 1, 
+    "model": "bids.bidcategory", 
+    "fields": {
+        "slug": "construction", 
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Construction", 
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{
+    "pk": 2, 
+    "model": "bids.bidcategory", 
+    "fields": {
+        "slug": "energy", 
+        "modified": "2013-05-22T14:56:47.578Z", 
+        "name": "Energy", 
+        "created": "2013-05-22T14:56:47.577Z"
+    }
+},
+{
+    "pk": 1, 
+    "model": "bids.bidsource", 
+    "fields": {
+        "crawl_message": "", 
+        "name": "Eatontown", 
+        "level": "county", 
+        "url": "http://eatontownnj.com/gen_info/gen.asp?info_id=33", 
+        "created": "2013-05-22T14:56:12.267Z", 
+        "enabled": true, 
+        "modified": "2013-05-22T14:56:12.268Z", 
+        "crawl_hash": "", 
+        "last_crawled": null, 
+        "crawl_type": "notify", 
+        "contact_name": "", 
+        "crawl_target": "", 
+        "contact_phone": "", 
+        "slug": "eatontown", 
+        "crawl_status": "new",
+        "county": 2
+    }
+},
+{
+    "pk": 1, 
+    "model": "bids.bid", 
+    "fields": {
+        "category": 2, 
+        "view_count": 0, 
+        "content_hash": "", 
+        "description": "something about energy", 
+        "end_date": null, 
+        "title": "test bidy", 
+        "url": "http://eatontownnj.com/images/boro/BIDSPECS3RDPARTYELECTRIC043013.pdf", 
+        "orig_id": "1", 
+        "created": "2013-05-22T14:57:31.004Z", 
+        "modified": "2013-05-22T14:57:31.029Z", 
+        "source": 1, 
+        "contact_name": "", 
+        "contact_phone": "", 
+        "open_date": null, 
+        "extra_info": "gAJYAAAAAC4="
+    }
+}
+]

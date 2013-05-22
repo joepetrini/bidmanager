@@ -8,6 +8,12 @@ from model_utils.fields import StatusField
 from model_utils.models import TimeStampedModel
 from picklefield.fields import PickledObjectField
 
+class County(TimeStampedModel):
+    name = models.CharField(max_length=100)
+
+    def __unicode__(self):
+        return self.name
+
 
 class BidCategory(TimeStampedModel):
     name = models.CharField(max_length=100)
@@ -25,16 +31,35 @@ class BidSource(TimeStampedModel):
         ('error', _('In Error')),
     )
 
+    CRAWL_TYPE = Choices(
+        ('notify', _('Notify')),
+        ('import', _('Auto Import'))
+    )
+
+    LEVEL = Choices(
+        ('county', _('County')),
+        ('state', _('State')),
+        ('federal', _('Federal')),
+        ('muncipal', _('Municpal')),
+    )
+
     name = models.CharField(max_length=100)
-    code = models.SlugField(max_length=100)
+    slug = models.SlugField(max_length=100)
     url = models.CharField(max_length=1000)
-    last_crawled = models.DateTimeField()
-    crawl_message = models.CharField(max_length=1000)
-    status = StatusField()
-    content_hash = models.CharField(max_length=1000)
+    level = models.CharField(choices=LEVEL, max_length=20, default=LEVEL.county)    
+    last_crawled = models.DateTimeField(null=True, blank=True)
+    crawl_message = models.CharField(max_length=1000, null=True, blank=True)
+    crawl_status = StatusField()
+    # Type: Notify - email if content changed, Import - crawl+import job set up for this source
+    crawl_type = models.CharField(choices=CRAWL_TYPE, default=CRAWL_TYPE.notify, max_length=20)
+    # CSS selector target used to tell if content has changed, leave blank for full page body
+    crawl_target = models.CharField(max_length=1000, null=True, blank=True)
+    crawl_hash = models.CharField(max_length=1000, null=True, blank=True)
     enabled = models.BooleanField(default=True)
-    contact_name = models.CharField(max_length=1000, blank=True)
-    contact_phone = models.CharField(max_length=1000, blank=True)
+    # Default contact info for bids on this site
+    contact_name = models.CharField(max_length=1000, null=True, blank=True)
+    contact_phone = models.CharField(max_length=1000, null=True, blank=True)
+    county = models.ForeignKey('County', null=True, blank=True)
 
     objects = models.Manager()
 
