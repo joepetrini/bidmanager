@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock %}
+{% block content %}
+	<br/>
+
+<div class="row">
+	<div class="span3">
+		<b>Counties</b><br>
+		{% for c in counties %}
+			<input type="checkbox" name="county" value="{{c.0}}">{{c.0}}<br>
+		{% endfor %}
+		<br>
+		<b>Categories</b><br>
+		{% for c in cats %}
+			<input type="checkbox" name="county" value="{{c.0}}">{{c.1}}<br>
+		{% endfor %}
+		<br>
+	</div>
+	<div class="span9">
+		<div class="row">
+		<div class="span5">
+			<div class="input-append">
+				<input id="appendedInputButtons" type="text">
+				<button class="btn" type="button">Search</button>
+			</div>
+		</div>
+		<div class="span2">
+			<select name="orderby" style="float:left">
+				<option>Order By</option>
+				<option>Newest</option>
+				<option>County</option>
+				<option>Category</option>
+			</select>
+		</div>
+		</div>
+		<br>
+		{% if latest %}
+		<b>Latest bids</b><br>
+		{% endif %}
+		Results
+		{% for r in results %}
+			{% include 'bids/_result.html' %}
+		{% endfor %}
+	</div>
+</div>
+
+
+{% endblock %}

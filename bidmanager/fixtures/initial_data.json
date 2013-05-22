@@ -1,6 +1,15 @@
 [
 {
     "pk": 1, 
+    "model": "bids.state", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "New Jersey", 
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{
+    "pk": 1, 
     "model": "bids.frontendsite", 
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
@@ -12,31 +21,63 @@
 },
 {
     "pk": 1, 
-    "model": "bids.state", 
+    "model": "bids.county", 
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "New Jersey", 
-
+        "name": "Atlantic", 
+        "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }
 },
 {
-    "pk": 1, 
-    "model": "bids.county", 
-    "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Gloucester", 
-        "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
-    },
     "pk": 2, 
     "model": "bids.county", 
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Monmouth", 
+        "name": "Bergen", 
         "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
-    }    
+    }
+},
+{    
+    "pk": 3, 
+    "model": "bids.county", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Burlington", 
+        "state": 1,
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{    
+    "pk": 4, 
+    "model": "bids.county", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Camden", 
+        "state": 1,
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{    
+    "pk": 5, 
+    "model": "bids.county", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Cape May", 
+        "state": 1,
+        "created": "2013-05-22T14:35:49.258Z"
+    }
+},
+{    
+    "pk": 6, 
+    "model": "bids.county", 
+    "fields": {
+        "modified": "2013-05-22T14:35:49.258Z", 
+        "name": "Cumberland", 
+        "state": 1,
+        "created": "2013-05-22T14:35:49.258Z"
+    }
 },
 {
     "pk": 1, 
@@ -77,7 +118,7 @@
         "contact_phone": "", 
         "slug": "eatontown", 
         "crawl_status": "new",
-        "county": 2
+        "county": 1
     }
 },
 {

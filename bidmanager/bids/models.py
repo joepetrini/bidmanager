@@ -41,6 +41,11 @@ class County(TimeStampedModel):
     class Meta:
         db_table = 'county'
 
+    @staticmethod
+    def choices():
+        #return County.objects.all()
+        return [(c.name, c.name) for c in County.objects.all()]
+
 
 class BidCategory(TimeStampedModel):
     name = models.CharField(max_length=100)
@@ -51,6 +56,11 @@ class BidCategory(TimeStampedModel):
 
     class Meta:
         db_table = 'category'        
+
+    @staticmethod
+    def choices():
+        #return BidCategory.objects.all()
+        return [(c.slug, c.name) for c in BidCategory.objects.all()]        
 
 
 class BidSource(TimeStampedModel):
