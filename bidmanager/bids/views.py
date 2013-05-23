@@ -1,6 +1,7 @@
 import logging
 from django.shortcuts import render
 from haystack.query import SearchQuerySet
+from haystack.inputs import AutoQuery, Exact, Clean
 from django.http import HttpResponse
 from .forms import SearchForm
 from .models import *
@@ -33,7 +34,9 @@ def howto(request):
 
 
 def search(request):
-    results = SearchQuerySet().all()
+    results = SearchQuerySet().filter(content=AutoQuery('eatontown'))
+    #logging.info(results.stats_results())
+
     logging.debug("len qa %s" % len(results))
     #form = SearchForm()
     return render(request, 'bids/search.html', {'latest': True, 'results': results, 'cats': BidCategory.choices(), 'counties': County.choices() })
