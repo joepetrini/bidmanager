@@ -1,3 +1,5 @@
 {{ object.title }}
 {{ object.description }}
+{{ object.category }}
+{{ object.source }}
 {{ object.source.county }}

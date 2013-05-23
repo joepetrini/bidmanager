@@ -34,9 +34,16 @@ def howto(request):
 
 
 def search(request):
-    results = SearchQuerySet().filter(content=AutoQuery('eatontown'))
+    results = SearchQuerySet().filter(content=AutoQuery('Construction'))
     #logging.info(results.stats_results())
 
     logging.debug("len qa %s" % len(results))
     #form = SearchForm()
     return render(request, 'bids/search.html', {'latest': True, 'results': results, 'cats': BidCategory.choices(), 'counties': County.choices() })
+
+def search_status(request):
+    all = SearchQuerySet().all()
+    out = ""
+    for a in all:
+        out += "%s<br>" % a.get_stored_fields()
+    return HttpResponse("Total items: %s<br>" % len(all) + out)
