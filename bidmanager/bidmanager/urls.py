@@ -14,6 +14,7 @@ urlpatterns = patterns('',
                        url(r'^search$', 'bids.views.search', name='search'),
                        url(r'^search_status$', 'bids.views.search_status', name='search_status'),                       
                        #url(r'^county/(?P<county_slug>[^\/]+)/[^\/]+/(?<bid_id>[\d]+)', 'bids.views.category', name='category'),
+                       url(r'^county/(?P<county_slug>[^\/]+)$', 'bids.views.county', name='county'),
                        # url(r'^bidmanager/', include('bidmanager.foo.urls')),
                        # Uncomment the admin/doc line below to enable admin documentation:
                        # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

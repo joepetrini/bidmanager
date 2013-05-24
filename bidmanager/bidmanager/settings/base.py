@@ -101,6 +101,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'middleware.TimezoneMiddleware',
+    'middleware.FrontendMiddleware',
 )
 
 ROOT_URLCONF = 'bidmanager.urls'

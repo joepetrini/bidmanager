@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="hero-unit">
-    <h1>Welcome to Jersey Bids</h1>
-    <br/>
-    <p>We supply updates and knowledge on current and upcoming bids, RFPs, and government contracts to keep you, the contractor, continuously aware of new projects and their specifications</p>
-    <p><a href="/search" class="btn btn-primary btn-large">Start Searching &raquo;</a></p>
-</div>
 
+<div class="row">
+	<div class="span12 facet">
+		<h3>JerseyBids provides a single interface to find Bids across every county in NJ</h3>
+		<span class="divider"></span>
+		{% for c in counties %}
+			<ul style="float:left;display:block:width:300px;list-style-type:none">
+				<li><b><a href="{{c.get_absolute_url}}">{{c}}</a></b></li>
+				{% for s in c.bidsource_set.all %}
+				<li><a href="{{s.url}}">{{s.name}}</a></li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</div>
+</div>
 {% endblock %}

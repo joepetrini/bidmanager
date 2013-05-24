@@ -12,7 +12,9 @@ from .models import *
 def about(request):
     """About Us page"""
     user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/home.html', {'u': user})
+    #sources = BidSource.objects.filter(county__state__id=request.state_filter).order_by('county')
+    counties = County.objects.select_related().filter(state__id=request.state_filter).order_by('name')
+    return render(request, 'bids/about.html', {'counties':counties, 'u': user})
 
 
 def contact(request):
@@ -20,6 +22,10 @@ def contact(request):
     user = request.user if request.user.is_authenticated() else None
     return render(request, 'bids/contact.html', {'u': user})
 
+def county(request, county_slug):
+    """Contact page"""
+    user = request.user if request.user.is_authenticated() else None
+    return render(request, 'bids/contact.html', {'u': user})
 
 def home(request):
     """Home page"""
@@ -46,6 +52,7 @@ def search(request):
         results = SearchQuerySet().filter(content=AutoQuery(q))
 
     # Add filters
+    results = results.filter(state=request.state_filter)
     if levels:
         levels = levels.split('-')
         results = results.filter(level__in=levels)

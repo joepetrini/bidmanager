@@ -25,6 +25,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Atlantic", 
+        "slug": "atlantic", 
         "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }
@@ -35,6 +36,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Bergen", 
+        "slug": "bergen", 
         "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }
@@ -45,6 +47,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Burlington", 
+        "slug": "burlington", 
         "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }
@@ -55,6 +58,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Camden", 
+        "slug": "camden", 
         "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }
@@ -65,6 +69,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "Cape May", 
+        "slug": "cape-may", 
         "state": 1,
         "created": "2013-05-22T14:35:49.258Z"
     }
@@ -141,6 +146,28 @@
         "slug": "eatontown", 
         "crawl_status": "new",
         "county": 2
+    }
+},
+{
+    "pk": 3, 
+    "model": "bids.bidsource", 
+    "fields": {
+        "crawl_message": "", 
+        "name": "Eatontown2", 
+        "level": "county", 
+        "url": "http://eatontownnj.com/gen_info/gen.asp?info_id=33", 
+        "created": "2013-05-22T14:56:12.267Z", 
+        "enabled": true, 
+        "modified": "2013-05-22T14:56:12.268Z", 
+        "crawl_hash": "", 
+        "last_crawled": null, 
+        "crawl_type": "notify", 
+        "contact_name": "", 
+        "crawl_target": "", 
+        "contact_phone": "", 
+        "slug": "eatontown", 
+        "crawl_status": "new",
+        "county": 1
     }
 },
 {

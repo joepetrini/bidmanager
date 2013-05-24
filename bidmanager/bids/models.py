@@ -33,6 +33,7 @@ class FrontendSite(TimeStampedModel):
 
 class County(TimeStampedModel):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
     state = models.ForeignKey('State')
 
     def __unicode__(self):
@@ -40,6 +41,10 @@ class County(TimeStampedModel):
 
     class Meta:
         db_table = 'county'
+
+
+    def get_absolute_url(self):
+        return "/county/%s" % self.slug
 
     @staticmethod
     def choices():
