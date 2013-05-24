@@ -1,52 +1,81 @@
 body {background-color: #fff}
-      /* Customize the navbar links to be fill the entire space of the .navbar */
-      .navbar .navbar-inner {
-        padding: 0;
-      }
-      .navbar .nav {
-        margin: 0;
-        display: table;
-        width: 100%;
-      }
-      .navbar .nav li {
-        display: table-cell;
-        /*width: 1%;*/
-        float: none;
-      }
-      .navbar .nav li a {
-        font-weight: bold;
-        text-align: center;
-        border-left: 1px solid rgba(255,255,255,.75);
-        border-right: 1px solid rgba(0,0,0,.1);
-      }
-      .navbar .nav li:first-child a {
-        border-left: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      .navbar .nav li:last-child a {
-        border-right: 0;
-        border-radius: 0 3px 3px 0;
-      }
 
-      .navbar-logo {
-      	padding:none;
-      	margin:none;
-      	border:none;
-      	background-image: none;
-      	background-color: #fff;
-      }
-      .navbar-logo ul li{
-      	padding:none;
-      	margin:none;
-      	border:none;
-      }
-      .navbar-logo ul li a{
-      	padding:none;
-      	margin:none;
-      	border-style:none;
-      }      
-      .navbar-logo ul{
-      	padding:none;
-      	margin:none;
-      	border:none;
-      }      
+      
+input[type='checkbox'] {margin:0px 5px 0 0;}
+
+.divider {
+  height: 4px;
+  display: block;
+  width: 100%;
+  background-color: #1c2e5c;
+  margin-bottom: 5px;
+}
+
+div.facet {   
+  background-color: #f2f2f2;
+  padding: 10px 10px 10px 15px;
+  -webkit-border-radius: 20px;
+   -moz-border-radius: 20px;
+   border-radius: 20px;
+  -moz-box-shadow:    1px 1px 2px 2px #ccc;
+  -webkit-box-shadow: 1px 1px 2px 2px #ccc;
+  box-shadow:         1px 1px 2px 2px #ccc;  
+ }
+ div.facet h3 {
+  /*color: #72b7fc;*/
+  font-size:16px;
+  line-height: 16px;
+ }
+ div.facet label, input {float:left; line-height: 16px;}
+
+/* Customize the navbar links to be fill the entire space of the .navbar */
+.navbar .navbar-inner {
+  padding: 0;
+}
+.navbar .nav {
+  margin: 0;
+  display: table;
+  width: 100%;
+}
+.navbar .nav li {
+  display: table-cell;
+  /*width: 1%;*/
+  float: none;
+}
+.navbar .nav li a {
+  font-weight: bold;
+  text-align: center;
+  border-left: 1px solid rgba(255,255,255,.75);
+  border-right: 1px solid rgba(0,0,0,.1);
+}
+.navbar .nav li:first-child a {
+  border-left: 0;
+  border-radius: 3px 0 0 3px;
+}
+.navbar .nav li:last-child a {
+  border-right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.navbar-logo {
+	padding:none;
+	margin:none;
+	border:none;
+	background-image: none;
+	background-color: #fff;
+}
+.navbar-logo ul li{
+	padding:none;
+	margin:none;
+	border:none;
+}
+.navbar-logo ul li a{
+	padding:none;
+	margin:none;
+	border-style:none;
+}      
+.navbar-logo ul{
+	padding:none;
+	margin:none;
+	border:none;
+}      

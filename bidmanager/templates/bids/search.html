@@ -1,49 +1,71 @@
 {% extends 'base.html' %}
 {% block title %}Search Bids{% endblock %}
+{% block onready %}
+	recheck_from_url();
+	$('#query').pressEnter(function(){search();})
+{% endblock %}
 {% block content %}
 	<br/>
 
 <div class="row">
 	<div class="span2">
-		<b>Counties</b><br>
-		{% for c in counties %}
-			<input type="checkbox" name="county" value="{{c.0}}">{{c.0}}<br>
-		{% endfor %}
-		<br>
-		<b>Categories</b><br>
-		{% for c in cats %}
-			<input type="checkbox" name="county" value="{{c.0}}">{{c.1}}<br>
-		{% endfor %}
+		<div id="levels" class="facet">	
+			<h3>Level</h3>
+			<span class="divider"></span>
+			{% for l in levels %}	
+				<input onclick="search()" type="checkbox" name="level" id="level_{{l}}" value="{{l}}" />
+				<label for="level_{{l}}">{{l|capfirst}}</label>
+				<div style="clear:both; height:0px;"></div>
+			{% endfor %}
+		</div>		
+		<br/>		
+		<div id="counties" class="facet">	
+			<h3>Counties</h3>
+			<span class="divider"></span>
+			{% for c in counties %}	
+				<input onclick="search()" type="checkbox" name="county" id="county_{{c.0}}" value="{{c.0}}" />
+				<label for="county_{{c.0}}">{{c.0|capfirst}}</label>
+				<div style="clear:both; height:0px;"></div>
+			{% endfor %}
+		</div>		
+		<br/>
+		<div id="categories" class="facet">		
+			<h3>Categories</h3>
+			<span class="divider"></span>
+			{% for c in cats %}
+				<input onclick="search()" type="checkbox" name="category" id="category_{{c.0}}" value="{{c.0}}" />
+				<label for="county_{{c.0}}">{{c.0|capfirst}}</label>
+				<div style="clear:both; height:0px;"></div>
+			{% endfor %}
+		</div>
 		<br>
 	</div>
 	<div class="span10">
 		<div class="row">
 		<div class="span5">
 			<div class="input-append">
-				<input id="appendedInputButtons" type="text">
-				<button class="btn" type="button">Search</button>
+				<input id="query" type="text">
+				<button class="btn" type="button" onclick="search()">Search</button>
 			</div>
 		</div>
 		<div class="span2">
-			<select name="orderby" style="float:left">
+			<select name="orderby" style="float:left" onchange="search()">
 				<option>Order By</option>
-				<option>Newest</option>
-				<option>County</option>
-				<option>Category</option>
+				<option value="date">Newest</option>
+				<option value="county">County</option>
+				<option value="category">Category</option>
 			</select>
 		</div>
 		</div>
 		<br>
-		{% if latest %}
-		<b>Latest bids</b><br>
-		{% endif %}
+		<b>{{result_title}}</b><br>
 		<table class="table table-striped table-bordered table-condensed">
 			<thead>
 			<tr>
-				<th>County</th>
-				<th>Category</th>
-				<th>Title</th>
-				<th>Date</th>
+				<th width="15%">County</th>
+				<th width="15%">Category</th>
+				<th width="60%">Title</th>
+				<th width="10%">Date</th>
 			</tr>
 			</thead>
 			<tbody>

@@ -122,6 +122,28 @@
     }
 },
 {
+    "pk": 2, 
+    "model": "bids.bidsource", 
+    "fields": {
+        "crawl_message": "", 
+        "name": "Eatontown", 
+        "level": "county", 
+        "url": "http://eatontownnj.com/gen_info/gen.asp?info_id=33", 
+        "created": "2013-05-22T14:56:12.267Z", 
+        "enabled": true, 
+        "modified": "2013-05-22T14:56:12.268Z", 
+        "crawl_hash": "", 
+        "last_crawled": null, 
+        "crawl_type": "notify", 
+        "contact_name": "", 
+        "crawl_target": "", 
+        "contact_phone": "", 
+        "slug": "eatontown", 
+        "crawl_status": "new",
+        "county": 2
+    }
+},
+{
     "pk": 1, 
     "model": "bids.bid", 
     "fields": {
@@ -138,7 +160,7 @@
         "source": 1, 
         "contact_name": "", 
         "contact_phone": "", 
-        "open_date": null, 
+        "open_date": "2013-05-22T14:57:31.004Z", 
         "extra_info": "gAJYAAAAAC4="
     }
 },
@@ -156,10 +178,10 @@
         "orig_id": "1", 
         "created": "2013-05-22T14:57:31.004Z", 
         "modified": "2013-05-22T14:57:31.029Z", 
-        "source": 1, 
+        "source": 2, 
         "contact_name": "", 
         "contact_phone": "", 
-        "open_date": null, 
+        "open_date": "2013-05-22T14:57:31.004Z", 
         "extra_info": "gAJYAAAAAC4="
     }
 }

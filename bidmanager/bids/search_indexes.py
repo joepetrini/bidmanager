@@ -10,6 +10,8 @@ class BidIndex(indexes.SearchIndex, indexes.Indexable):
     category = indexes.CharField(indexed=True, model_attr='category')
     source = indexes.CharField(model_attr='source')
     county = indexes.CharField(model_attr='source__county')
+    level = indexes.CharField(model_attr='source__level')    
+    date = indexes.DateTimeField(model_attr='open_date')
 
     def get_model(self):
         return Bid

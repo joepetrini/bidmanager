@@ -18,7 +18,7 @@ def about(request):
 def contact(request):
     """Contact page"""
     user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/home.html', {'u': user})
+    return render(request, 'bids/contact.html', {'u': user})
 
 
 def home(request):
@@ -30,20 +30,45 @@ def home(request):
 def howto(request):
     """HowTo page"""
     user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/home.html', {'u': user})
+    return render(request, 'bids/howto.html', {'u': user})
 
 
 def search(request):
-    results = SearchQuerySet().filter(content=AutoQuery('Construction'))
-    #logging.info(results.stats_results())
+    q = request.GET.get('q')
+    levels = request.GET.get('levels')
+    counties = request.GET.get('counties')
+    categories = request.GET.get('categories')
 
-    logging.debug("len qa %s" % len(results))
-    #form = SearchForm()
-    return render(request, 'bids/search.html', {'latest': True, 'results': results, 'cats': BidCategory.choices(), 'counties': County.choices() })
+    # Text query
+    if q is None:
+        results = SearchQuerySet().all()
+    else:
+        results = SearchQuerySet().filter(content=AutoQuery(q))
+
+    # Add filters
+    if levels:
+        levels = levels.split('-')
+        results = results.filter(level__in=levels)
+    if categories:
+        categories = categories.split('-')
+        results = results.filter(category__in=categories)            
+    if counties:
+        counties = counties.split('-')
+        results = results.filter(county__in=counties)
+
+    rtitle = "Showing %s results" % len(results)
+    levels = ['state','county','municipal']
+    return render(request, 'bids/search.html', 
+        {'result_title': rtitle, 'results': results, 'cats': BidCategory.choices(),
+         'counties': County.choices(), 'levels': levels })
 
 def search_status(request):
     all = SearchQuerySet().all()
     out = ""
     for a in all:
-        out += "%s<br>" % a.get_stored_fields()
+        s = str(a.get_stored_fields())
+        out += "%s" % s.replace(",","<br>")
+        #for f in a.get_stored_fields():
+        #    out += "%s %s<br>" % (f, f.value)
+        out += "<br><br>"
     return HttpResponse("Total items: %s<br>" % len(all) + out)
