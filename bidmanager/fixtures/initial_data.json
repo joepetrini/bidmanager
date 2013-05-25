@@ -109,9 +109,9 @@
     "model": "bids.bidsource", 
     "fields": {
         "crawl_message": "", 
-        "name": "Eatontown", 
+        "name": "Barrington", 
         "level": "county", 
-        "url": "http://eatontownnj.com/gen_info/gen.asp?info_id=33", 
+        "url": "http://localhost:8001/media/sampledata/barrington.html", 
         "created": "2013-05-22T14:56:12.267Z", 
         "enabled": true, 
         "modified": "2013-05-22T14:56:12.268Z", 
@@ -131,9 +131,9 @@
     "model": "bids.bidsource", 
     "fields": {
         "crawl_message": "", 
-        "name": "Eatontown", 
+        "name": "Chatham", 
         "level": "county", 
-        "url": "http://eatontownnj.com/gen_info/gen.asp?info_id=33", 
+        "url": "http://localhost:8001/media/sampledata/chatham.html", 
         "created": "2013-05-22T14:56:12.267Z", 
         "enabled": true, 
         "modified": "2013-05-22T14:56:12.268Z", 

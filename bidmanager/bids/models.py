@@ -73,6 +73,7 @@ class BidSource(TimeStampedModel):
     STATUS = Choices(
         ('new', _('New')),
         ('ok', _('Good')),
+        ('review', _('Needs review')),        
         ('error', _('In Error')),
     )
 
@@ -105,6 +106,7 @@ class BidSource(TimeStampedModel):
     contact_name = models.CharField(max_length=1000, null=True, blank=True)
     contact_phone = models.CharField(max_length=1000, null=True, blank=True)
     county = models.ForeignKey('County', null=True, blank=True)
+    crawl_code = models.TextField(null=True, blank=True)
 
     objects = models.Manager()
 
@@ -127,10 +129,11 @@ class Bid(TimeStampedModel):
         ('new', _('New')),
         ('published', _('Published')),
         ('closed', _('Closed')),
+        ('ignore', _('Ignore')),        
     )
 
-    orig_id = models.CharField(max_length=1000,
-                               help_text="Unique ID from src sys")
+    orig_id = models.CharField(max_length=1000, null=True, blank=True, 
+                                help_text="Unique ID from src sys",)
     source = models.ForeignKey('BidSource')
     category = models.ForeignKey('BidCategory', blank=True, null=True)
     title = models.CharField(max_length=1000, blank=True)
