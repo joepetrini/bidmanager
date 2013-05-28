@@ -1,0 +1,8 @@
+
+{% block content %}
+
+{% for s in sources %}
+	<a href="/backend/edit/{{s.id}}">{{s}}</a><br>
+{% endfor %}
+
+{% endblock %}

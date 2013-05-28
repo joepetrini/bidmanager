@@ -123,6 +123,10 @@ class BidSource(TimeStampedModel):
         self.save()
 
 
+class BidSourceAdmin(admin.ModelAdmin):
+    exclude = ('last_crawled','crawl_hash','crawl_message','crawl_status',)
+
+
 class Bid(TimeStampedModel):
 
     STATUS = Choices(
@@ -158,5 +162,5 @@ class Bid(TimeStampedModel):
 admin.site.register(State)
 admin.site.register(County)
 admin.site.register(BidCategory)
-admin.site.register(BidSource)
+admin.site.register(BidSource, BidSourceAdmin)
 admin.site.register(Bid)

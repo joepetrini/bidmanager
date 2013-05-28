@@ -18,6 +18,8 @@ urlpatterns = patterns('',
                        # url(r'^bidmanager/', include('bidmanager.foo.urls')),
                        # Uncomment the admin/doc line below to enable admin documentation:
                        # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+                       url(r'^backend$', 'backend.views.sources', name='backend'),
+                       url(r'^backend/edit/(?P<source_id>[^\/])$', 'backend.views.editcrawl', name='edit'),
                        (r'^profile/login/$', 'profiles.views.login_user'),
                        url(r'^admin/', include(admin.site.urls)),
                        )
