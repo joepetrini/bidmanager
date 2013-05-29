@@ -16,6 +16,4 @@ def editcrawl(request, source_id):
 		source.save()
 	# Run crawl
 	result = crawl(source)
-
-
-	return render(request, 'backend/editcrawl.html', {'source': source})	
+	return render(request, 'backend/editcrawl.html', {'source': source, 'result': result})	

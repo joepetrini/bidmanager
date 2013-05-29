@@ -1,10 +1,18 @@
 {% extends 'backend/base.html' %}
 
 {% block content %}
+Crawler for <a href="{{source.url}}">{{source}}</a><br>
+Should start with "def crawlsite(tree):"
 <form action="" method="post">
-<textarea name="code" rows="20" cols="100">{{source.crawl_code}}</textarea>
+<textarea name="code" rows="20" style="width:800px">{{source.crawl_code}}</textarea>
 <br/>
 <input type="submit" value="Save"/>
 {% csrf_token %}
 </form>
+Crawl Results:<br>
+Message: {{result.msg}}<br>
+{% for bid in result.bids %}
+	{{bid}}<br>	
+{% endfor %}
 {% endblock %}
+<br>{{result.error}}

@@ -12,13 +12,15 @@ def crawl(source):
 			f.write
 			f.write(source.crawl_code)
 		try:
-			from tmp import a
+			from tmp import crawlsite
 			bids = []
 			html = requests.get(source.url).text
 			tree   = etree.parse(StringIO(html), parser)
-			result = a(tree)
-		except:
-			pass
+			result = crawlsite(tree)
+			return result
+		except Exception,e:
+			print "Error! %s" % e
+			return {'error':e}
 
 		#bids = a(bids,tree)
 		##for b in bids:
