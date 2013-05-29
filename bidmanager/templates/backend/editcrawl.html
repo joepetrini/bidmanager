@@ -1,5 +1,10 @@
+{% extends 'backend/base.html' %}
+
+{% block content %}
 <form action="" method="post">
-<textarea name="code" rows="20" cols="60">{{source.crawl_code}}</textarea>
+<textarea name="code" rows="20" cols="100">{{source.crawl_code}}</textarea>
+<br/>
 <input type="submit" value="Save"/>
 {% csrf_token %}
 </form>
+{% endblock %}

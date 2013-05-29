@@ -8,3 +8,6 @@ pytz==2012h
 requests==1.0.4
 south==0.7.6
 unipath==0.2.1
+django-picklefield
+django-haystack
+

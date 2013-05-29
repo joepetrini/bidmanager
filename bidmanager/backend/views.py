@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from bids.models import *
+from crawl import crawl
 
 
 def sources(request):
@@ -14,5 +15,7 @@ def editcrawl(request, source_id):
 		source.crawl_code = request.POST['code']
 		source.save()
 	# Run crawl
+	result = crawl(source)
+
 
 	return render(request, 'backend/editcrawl.html', {'source': source})	
