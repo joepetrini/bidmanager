@@ -36,3 +36,5 @@ nosetests.xml
 
 # Search index dir
 whoosh/
+*.toc
+*.db
