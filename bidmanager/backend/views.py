@@ -5,7 +5,8 @@ from bids.models import *
 
 def sources(request):
 	sources = BidSource.objects.all()
-	return render(request, 'backend/sources.html', {'sources': sources})
+	new_bids = Bid.objects.filter(status=Bid.STATUS.new)
+	return render(request, 'backend/sources.html', {'bids': new_bids, 'sources': sources})
 
 
 def editcrawl(request, source_id):

@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 from bids.models import *
 
-source = BidSource.objects.get(slug='chatham')
+source = BidSource.objects.get(slug='barrington')
 parser = etree.HTMLParser()	
 html = requests.get(source.url).text
 tree = etree.parse(StringIO(html), parser)

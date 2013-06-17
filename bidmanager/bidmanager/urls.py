@@ -6,11 +6,18 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
+from bids.sitemaps import BidSitemap
+
+sitemaps = {
+    'bid': BidSitemap,
+}
+
 urlpatterns = patterns('',
                        url(r'^$', 'bids.views.home', name='home'),
                        url(r'^about$', 'bids.views.about', name='about'),
                        url(r'^contact$', 'bids.views.contact', name='contact'),
                        url(r'^how-to$', 'bids.views.howto', name='howto'),
+                      (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        url(r'^search$', 'bids.views.search', name='search'),
                        url(r'^search_status$', 'bids.views.search_status', name='search_status'),                       
                        #url(r'^county/(?P<county_slug>[^\/]+)/[^\/]+/(?<bid_id>[\d]+)', 'bids.views.category', name='category'),

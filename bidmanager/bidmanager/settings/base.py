@@ -89,6 +89,7 @@ SECRET_KEY = 'mqx^jv*yh6y9yphp7n9i2)bd61e8y!v0mxutuy#%d4)e9bjb^6'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
 
@@ -126,6 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sitemaps',
     #'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',

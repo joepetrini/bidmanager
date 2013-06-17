@@ -5,5 +5,19 @@
 {% for s in sources %}
 	<a href="/backend/edit/{{s.id}}">{{s}}</a><br>
 {% endfor %}
+<hr>
 
+<table class="table">
+	<tr><th>Source</th><th>Title</th><th>Action</th></tr>
+{% for b in bids %}
+	<tr>
+		<td>{{b.source}}</td>
+		<td>{{b.title}}</td>
+		<td>
+			<a href="{{b.url}}">View</a>
+			<a href="/admin/bids/bid/{{b.id}}">Edit</a>
+		</td>
+	</tr>
+{% endfor %}
+	</table>
 {% endblock %}

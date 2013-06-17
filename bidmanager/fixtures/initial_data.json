@@ -111,7 +111,7 @@
         "crawl_message": "", 
         "name": "Barrington", 
         "level": "county", 
-        "url": "http://localhost:8001/media/sampledata/barrington.html", 
+        "url": "http://barringtonboro.com/government/request-for-proposal", 
         "created": "2013-05-22T14:56:12.267Z", 
         "enabled": true, 
         "modified": "2013-05-22T14:56:12.268Z", 
@@ -121,7 +121,7 @@
         "contact_name": "", 
         "crawl_target": "", 
         "contact_phone": "", 
-        "slug": "eatontown", 
+        "slug": "barrington", 
         "crawl_status": "new",
         "county": 1
     }
@@ -133,7 +133,7 @@
         "crawl_message": "", 
         "name": "Chatham", 
         "level": "county", 
-        "url": "http://localhost:8001/media/sampledata/chatham.html", 
+        "url": "http://www.chathamtownship.org/bid_list.html", 
         "created": "2013-05-22T14:56:12.267Z", 
         "enabled": true, 
         "modified": "2013-05-22T14:56:12.268Z", 
@@ -153,7 +153,7 @@
     "model": "bids.bidsource", 
     "fields": {
         "crawl_message": "", 
-        "name": "Eatontown2", 
+        "name": "Eatontown", 
         "level": "county", 
         "url": "http://eatontownnj.com/gen_info/gen.asp?info_id=33", 
         "created": "2013-05-22T14:56:12.267Z", 

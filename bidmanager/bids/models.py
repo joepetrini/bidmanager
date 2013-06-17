@@ -150,7 +150,8 @@ class Bid(TimeStampedModel):
     extra_info = PickledObjectField()
     view_count = models.IntegerField(default=0)
     url = models.CharField(max_length=1000)
-
+    status = StatusField(default=STATUS.new)
+    
     objects = models.Manager()
 
     class Meta:
@@ -158,6 +159,9 @@ class Bid(TimeStampedModel):
 
     def __unicode__(self):
         return "%s - %s" % (self.source, self.title[:60])
+
+    def get_absolute_url(self):
+        return "/%s" % self.id
 
 admin.site.register(State)
 admin.site.register(County)

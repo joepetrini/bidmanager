@@ -18,26 +18,43 @@ DATABASES = {
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,
+    'root': {
+        'level': 'WARNING',
+        'handlers': ['sentry'],
+    },
     'formatters': {
-        'standard': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
     },
     'handlers': {
-        'console':{
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
-            'formatter': 'standard',
+        'sentry': {
+            'level': 'ERROR',
+            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
         },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        }
     },
     'loggers': {
-        'django.request': {
+        'django.db.backends': {
+            'level': 'ERROR',
             'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
+            'propagate': False,
         },
-    }
+        'raven': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+        'sentry.errors': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+            'propagate': False,
+        },
+    },
 }
 
 DEBUG_TOOLBAR_CONFIG = {
@@ -70,7 +87,15 @@ DEBUG_TOOLBAR_CONFIG = {
     # Don't forget to use absolute paths, not relative paths.
 #)
 
-INSTALLED_APPS += ('debug_toolbar', )
+# Set your DSN value
+RAVEN_CONFIG = {
+    'dsn': 'http://1a69a4061af5440aa465d146b617dd50:78ebc2c515024516905090711cd40040@sentry.workdaysuntil.com/2',
+}
+
+# Add raven to the list of installed apps
+INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+
+#INSTALLED_APPS += ('debug_toolbar', )
 INTERNAL_IPS = ('127.0.0.1','0.0.0.0')
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
+#MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 INSTALLED_APPS += ('devserver',)
