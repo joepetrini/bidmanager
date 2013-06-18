@@ -1,10 +1,4 @@
-from pprint import pprint
-import urlparse
 import importlib
-from StringIO import StringIO
-import requests
-from bs4 import BeautifulSoup
-from lxml import etree
 from django.core.management.base import BaseCommand, CommandError
 from bids.models import Bid, BidSource
 
@@ -16,9 +10,17 @@ class Command(BaseCommand):
         self.stdout.write("%s" % m)
 
     def handle(self, *args, **options):
-        parser = etree.HTMLParser()	    	
-        for source in BidSource.objects.all():
-            #self.p("%s" % source)
+        if len(args) == 1:
+            #sources = BidSource.objects.filter(slug=args[0])
+            importlib.import_module("backend.crawlers.%s" % args[0])
+        else:
+            sources = BidSource.objects.all()
+            for source in sources:
+                self.p("%s" % source)
+
+            #importlib.import_module("backend.crawlers.%s" % args[0]
+
+            """
             if source.crawl_code <> "":
                 self.p(source)
                 r1 = urlparse.urlsplit(source.url)
@@ -40,6 +42,7 @@ class Command(BaseCommand):
                     opendate = tds[1].contents[0].string
                     link = base_url + tds[2].find_all('a')[0].get('href')
                     self.p(link)
+            """
             """
             if source.crawl_code is not None:
             #with open('tmp.py','w') as f:

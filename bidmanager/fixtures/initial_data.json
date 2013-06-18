@@ -188,7 +188,8 @@
         "contact_name": "", 
         "contact_phone": "", 
         "open_date": "2013-05-22T14:57:31.004Z", 
-        "extra_info": "gAJYAAAAAC4="
+        "extra_info": "gAJYAAAAAC4=",
+        "status": "published"
     }
 },
 {
@@ -209,7 +210,8 @@
         "contact_name": "", 
         "contact_phone": "", 
         "open_date": "2013-05-22T14:57:31.004Z", 
-        "extra_info": "gAJYAAAAAC4="
+        "extra_info": "gAJYAAAAAC4=",
+        "status": "published"
     }
 }
 ]
