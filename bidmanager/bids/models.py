@@ -163,6 +163,8 @@ class Bid(TimeStampedModel):
     def get_absolute_url(self):
         return "/%s" % self.id
 
+"""
+
 class Attachment(TimeStampedModel):
     TYPE = Choices(
         ('spec', _('Spec')),
@@ -172,7 +174,7 @@ class Attachment(TimeStampedModel):
     bid = models.ForeignKey('Bid')
     url = models.CharField(max_length=1000)
     kind = models.CharField(choices=TYPE, max_length=20)
-
+"""
 
 admin.site.register(State)
 admin.site.register(County)

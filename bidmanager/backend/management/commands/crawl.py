@@ -1,4 +1,5 @@
 import importlib
+import logging
 from django.core.management.base import BaseCommand, CommandError
 from bids.models import Bid, BidSource
 
@@ -16,7 +17,8 @@ class Command(BaseCommand):
         else:
             sources = BidSource.objects.all()
             for source in sources:
-                self.p("%s" % source)
+                self.p("Crawling %s" % source.slug)
+                importlib.import_module("backend.crawlers.%s" % source.slug)
 
             #importlib.import_module("backend.crawlers.%s" % args[0]
 

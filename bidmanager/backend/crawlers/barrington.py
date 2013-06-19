@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 from lxml import etree
 from bids.models import *
 
+
+"""
 source = BidSource.objects.get(slug='barrington')
 parser = etree.HTMLParser()	
 html = requests.get(source.url).text
@@ -33,3 +35,4 @@ for tr in table.xpath('tr')[1:]:
 	if len(bid) == 0:
 		Bid(source=source,orig_id=title,title=title,url=url).save()
 	#print "title %s" % url
+"""
