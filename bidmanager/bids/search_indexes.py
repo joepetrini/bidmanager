@@ -18,4 +18,4 @@ class BidIndex(indexes.SearchIndex, indexes.Indexable):
         return Bid
 
     def index_queryset(self, using=None):
-        return self.get_model().objects.filter(status=Bid.STATUS.published)
+        return self.get_model().objects.filter(status=Bid.STATUS.new)

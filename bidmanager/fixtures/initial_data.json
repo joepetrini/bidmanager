@@ -12,76 +12,240 @@
     "pk": 1, 
     "model": "bids.frontendsite", 
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
         "name": "JerseyBids", 
         "url": ".jerseybids.",
-        "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "state": 1
     }
 },
 {
-    "pk": 1, 
-    "model": "bids.county", 
+    "pk": 1,
+    "model": "bids.county",
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Atlantic", 
-        "slug": "atlantic", 
+        "slug": "atlantic",
         "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "modified": "2013-06-18T00:12:04.814Z",
+        "name": "Atlantic",
+        "created": "2013-06-18T00:12:04.814Z"
     }
 },
 {
-    "pk": 2, 
-    "model": "bids.county", 
+    "pk": 2,
+    "model": "bids.county",
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Bergen", 
-        "slug": "bergen", 
+        "slug": "bergen",
         "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "modified": "2013-06-18T00:12:04.816Z",
+        "name": "Bergen",
+        "created": "2013-06-18T00:12:04.816Z"
     }
 },
-{    
-    "pk": 3, 
-    "model": "bids.county", 
+{
+    "pk": 3,
+    "model": "bids.county",
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Burlington", 
-        "slug": "burlington", 
+        "slug": "burlington",
         "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "modified": "2013-06-18T00:12:04.818Z",
+        "name": "Burlington",
+        "created": "2013-06-18T00:12:04.818Z"
     }
 },
-{    
-    "pk": 4, 
-    "model": "bids.county", 
+{
+    "pk": 4,
+    "model": "bids.county",
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Camden", 
-        "slug": "camden", 
+        "slug": "camden",
         "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "modified": "2013-06-18T00:12:04.819Z",
+        "name": "Camden",
+        "created": "2013-06-18T00:12:04.819Z"
     }
 },
-{    
-    "pk": 5, 
-    "model": "bids.county", 
+{
+    "pk": 5,
+    "model": "bids.county",
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Cape May", 
-        "slug": "cape-may", 
+        "slug": "cape-may",
         "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "modified": "2013-06-18T00:12:04.821Z",
+        "name": "Cape May",
+        "created": "2013-06-18T00:12:04.821Z"
     }
 },
-{    
-    "pk": 6, 
-    "model": "bids.county", 
+{
+    "pk": 6,
+    "model": "bids.county",
     "fields": {
-        "modified": "2013-05-22T14:35:49.258Z", 
-        "name": "Cumberland", 
+        "slug": "cumberland",
         "state": 1,
-        "created": "2013-05-22T14:35:49.258Z"
+        "modified": "2013-06-18T00:12:04.824Z",
+        "name": "Cumberland",
+        "created": "2013-06-18T00:12:04.824Z"
+    }
+},
+{
+    "pk": 7,
+    "model": "bids.county",
+    "fields": {
+        "slug": "essex",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.826Z",
+        "name": "Essex",
+        "created": "2013-06-18T00:12:04.826Z"
+    }
+},
+{
+    "pk": 8,
+    "model": "bids.county",
+    "fields": {
+        "slug": "gloucester",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.828Z",
+        "name": "Gloucester",
+        "created": "2013-06-18T00:12:04.828Z"
+    }
+},
+{
+    "pk": 9,
+    "model": "bids.county",
+    "fields": {
+        "slug": "hudson",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.829Z",
+        "name": "Hudson",
+        "created": "2013-06-18T00:12:04.829Z"
+    }
+},
+{
+    "pk": 10,
+    "model": "bids.county",
+    "fields": {
+        "slug": "hunterdon",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.831Z",
+        "name": "Hunterdon",
+        "created": "2013-06-18T00:12:04.831Z"
+    }
+},
+{
+    "pk": 11,
+    "model": "bids.county",
+    "fields": {
+        "slug": "mercer",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.832Z",
+        "name": "Mercer",
+        "created": "2013-06-18T00:12:04.832Z"
+    }
+},
+{
+    "pk": 12,
+    "model": "bids.county",
+    "fields": {
+        "slug": "middlesex",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.834Z",
+        "name": "Middlesex",
+        "created": "2013-06-18T00:12:04.834Z"
+    }
+},
+{
+    "pk": 13,
+    "model": "bids.county",
+    "fields": {
+        "slug": "monmouth",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.836Z",
+        "name": "Monmouth",
+        "created": "2013-06-18T00:12:04.836Z"
+    }
+},
+{
+    "pk": 14,
+    "model": "bids.county",
+    "fields": {
+        "slug": "morris",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.837Z",
+        "name": "Morris",
+        "created": "2013-06-18T00:12:04.837Z"
+    }
+},
+{
+    "pk": 15,
+    "model": "bids.county",
+    "fields": {
+        "slug": "ocean",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.839Z",
+        "name": "Ocean",
+        "created": "2013-06-18T00:12:04.839Z"
+    }
+},
+{
+    "pk": 16,
+    "model": "bids.county",
+    "fields": {
+        "slug": "passaic",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.841Z",
+        "name": "Passaic",
+        "created": "2013-06-18T00:12:04.841Z"
+    }
+},
+{
+    "pk": 17,
+    "model": "bids.county",
+    "fields": {
+        "slug": "salem",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.842Z",
+        "name": "Salem",
+        "created": "2013-06-18T00:12:04.842Z"
+    }
+},
+{
+    "pk": 18,
+    "model": "bids.county",
+    "fields": {
+        "slug": "somerset",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.844Z",
+        "name": "Somerset",
+        "created": "2013-06-18T00:12:04.844Z"
+    }
+},
+{
+    "pk": 19,
+    "model": "bids.county",
+    "fields": {
+        "slug": "sussex",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.846Z",
+        "name": "Sussex",
+        "created": "2013-06-18T00:12:04.846Z"
+    }
+},
+{
+    "pk": 20,
+    "model": "bids.county",
+    "fields": {
+        "slug": "snion",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.847Z",
+        "name": "Union",
+        "created": "2013-06-18T00:12:04.847Z"
+    }
+},
+{
+    "pk": 21,
+    "model": "bids.county",
+    "fields": {
+        "slug": "sarren",
+        "state": 1,
+        "modified": "2013-06-18T00:12:04.849Z",
+        "name": "Warren",
+        "created": "2013-06-18T00:12:04.849Z"
     }
 },
 {
@@ -131,21 +295,21 @@
     "model": "bids.bidsource", 
     "fields": {
         "crawl_message": "", 
-        "name": "Chatham", 
+        "name": "Belmar", 
         "level": "county", 
-        "url": "http://www.chathamtownship.org/bid_list.html", 
+        "url": "http://belmar.com/content.php?npid=69&npid1=239&pid=239&menu_id=20", 
         "created": "2013-05-22T14:56:12.267Z", 
         "enabled": true, 
         "modified": "2013-05-22T14:56:12.268Z", 
         "crawl_hash": "", 
         "last_crawled": null, 
-        "crawl_type": "notify", 
-        "contact_name": "", 
+        "crawl_type": "notify",
+        "contact_name": "",
         "crawl_target": "", 
         "contact_phone": "", 
-        "slug": "chatham", 
+        "slug": "belmar", 
         "crawl_status": "new",
-        "county": 2
+        "county": 13
     }
 },
 {
@@ -188,8 +352,7 @@
         "contact_name": "", 
         "contact_phone": "", 
         "open_date": "2013-05-22T14:57:31.004Z", 
-        "extra_info": "gAJYAAAAAC4=",
-        "status": "published"
+        "extra_info": "gAJYAAAAAC4="
     }
 },
 {
@@ -210,8 +373,7 @@
         "contact_name": "", 
         "contact_phone": "", 
         "open_date": "2013-05-22T14:57:31.004Z", 
-        "extra_info": "gAJYAAAAAC4=",
-        "status": "published"
+        "extra_info": "gAJYAAAAAC4="
     }
 }
 ]
