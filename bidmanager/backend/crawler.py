@@ -7,6 +7,7 @@ from lxml import etree
 from bids.models import *
 
 class Crawler():
+	doctypes = ['pdf','doc','docx']
 
 	def __init__(self, county="", url=""):
 		# Get the calling module
