@@ -2,9 +2,10 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
 
+<h3>New bids to process</h3>
 <table class="table table-striped">
 	<tr><th>Source</th><th>Title</th><th>Added</th><th>Action</th></tr>
-{% for b in bids %}
+	{% for b in bids %}
 	<tr>
 		<td>{{b.source}}</td>
 		<td>{{b.title}}</td>

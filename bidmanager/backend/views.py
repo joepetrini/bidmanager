@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from bids.models import *
 #from crawl import crawl
 
-
+@login_required
 def dashboard(request):
     #sources = BidSource.objects.all()
     new_bids = Bid.objects.filter(status=Bid.STATUS.new).order_by('-created')

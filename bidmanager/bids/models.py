@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
 from django.contrib import admin
+from django.forms import TextInput, Textarea
 from django.utils.timezone import utc
 from django.utils.translation import ugettext as _
 from model_utils import Choices
@@ -159,7 +160,7 @@ class Bid(TimeStampedModel):
         db_table = 'bid'
 
     def __unicode__(self):
-        return "%s - %s" % (self.source, self.title[:60])
+        return "%s - %s - %s" % (self.source, self.title[:60], self.status)
 
     def get_absolute_url(self):
         return "/%s" % self.id
@@ -168,6 +169,10 @@ class Bid(TimeStampedModel):
 class BidAdmin(admin.ModelAdmin):
     exclude = ('orig_id', 'content_hash',)
     readonly_fields = ('view_count', 'url', 'source', )
+    formfield_overrides = {
+        models.CharField: {'widget': TextInput(attrs={'size':'150'})},
+        models.TextField: {'widget': Textarea(attrs={'rows':25, 'cols':120})},
+    }
 """
 
 class Attachment(TimeStampedModel):
