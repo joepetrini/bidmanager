@@ -7,7 +7,7 @@ from lxml import etree
 from bids.models import *
 
 
-class Crawler():
+class Crawler(object):
     doctypes = ['pdf', 'doc', 'docx']
 
     def __init__(self, county="", url=""):
@@ -50,8 +50,13 @@ class DocLinkCrawler(Crawler):
     Crawler template for pages with <a href="[url]">[Title]</a> format
     """
 
-    def Crawl(self):
-        for a in self.soup.find_all('a'):
+    def Crawl(self, dom=None):
+        if dom is not None:
+            elements = dom.find_all('a')
+        else:
+            elements = self.soup.find_all('a')
+            
+        for a in elements:
             url = a['href']
             if any(url.endswith('.'+x) for x in self.doctypes):
                 # Fix relative paths

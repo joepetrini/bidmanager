@@ -166,8 +166,8 @@ class Bid(TimeStampedModel):
 
 
 class BidAdmin(admin.ModelAdmin):
-    exclude = ('orig_id', 'source', 'content_hash', 'url', )
-    readonly_fields = ('view_count',)
+    exclude = ('orig_id', 'content_hash',)
+    readonly_fields = ('view_count', 'url', 'source', )
 """
 
 class Attachment(TimeStampedModel):
