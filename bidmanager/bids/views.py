@@ -42,11 +42,13 @@ def howto(request):
 
 
 def bid_detail(request, bid_id):
+    prev_url = request.session.get('prev_url')
     bid = get_object_or_404(Bid, pk=bid_id)
-    return render(request, 'bids/bid_detail.html', {'bid': bid})
+    return render(request, 'bids/bid_detail.html', {'bid': bid, 'prev_url': prev_url})
 
 
 def search(request):
+    request.session['prev_url'] = request.build_absolute_uri()
     q = request.GET.get('q')
     levels = request.GET.get('levels')
     counties = request.GET.get('counties')

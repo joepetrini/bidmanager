@@ -5,6 +5,11 @@
 {% block onready %}
 	recheck_from_url();
 	$('#query').pressEnter(function(){search();})
+
+	$("tr.clickable").click(function() {
+  		window.location.href = $(this).find("a").attr("href");
+	});
+	
 {% endblock %}
 {% block content %}
 	<br/>
@@ -24,11 +29,13 @@
 		<div id="counties" class="facet">	
 			<h3>Counties</h3>
 			<span class="divider"></span>
+			<div style="height:150px; overflow:scroll; padding-left:2px;">
 			{% for c in counties %}	
 				<input onclick="search()" type="checkbox" name="county" id="county_{{c.0}}" value="{{c.0}}" />
 				<label for="county_{{c.0}}">{{c.0|capfirst}}</label>
 				<div style="clear:both; height:0px;"></div>
 			{% endfor %}
+			</div>
 		</div>		
 		<br/>
 		<div id="categories" class="facet">		

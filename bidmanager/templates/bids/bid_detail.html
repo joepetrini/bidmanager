@@ -5,11 +5,18 @@
 {% endblock %}
 {% block content %}
 
+
 <div class="row">
-	<div class="span10 offset1">
-	<h3>Bid Detail</h3>
-	<strong>{{bid.title}}</strong>
+	<div class="span10 offset1 bid">
+	{% if prev_url %}
+	<a href="{{prev_url}}">Back to results</a>
+	{% endif %}
+
+	<h1>{{bid.title}}</h1>
+		<label>Category</label>{{bid.category}}
+		<label>Category</label>{{bid.category}}
 	<hr>
+	<strong>Detail:</srong>
 	<p class="bid_detail">
 		{{bid.description|markdown:"safe"}}
 	</p>
