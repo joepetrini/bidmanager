@@ -10,6 +10,7 @@
 		<td>{{b.title}}</td>
 		<td>{{b.created|date:"Y-m-d h:i A"}}</td>
 		<td>
+			<a target="_newtab" href="{{b.source.url}}">Source</a>
 			<a target="_newtab" href="{{b.url}}">View</a>
 			<a href="/admin/bids/bid/{{b.id}}">Edit</a>
 		</td>

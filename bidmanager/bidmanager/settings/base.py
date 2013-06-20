@@ -133,6 +133,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.markup',
     'haystack',
+    'endless_pagination',
     'profiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',

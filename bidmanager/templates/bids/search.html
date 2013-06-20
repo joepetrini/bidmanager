@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load endless %}
+
 {% block title %}Search Bids{% endblock %}
 {% block onready %}
 	recheck_from_url();
@@ -69,12 +71,25 @@
 			</tr>
 			</thead>
 			<tbody>
+			{% paginate results %}
 			{% for r in results %}
 				{% include 'bids/_result.html' %}
 			{% endfor %}
 			</tbody>
 		</table>
 
+		<div class="pagination">
+		<ul>
+			{% get_pages %}
+			{% for page in pages %}
+				<!--{% if page.number == 2 %}
+				<li>{{ pages.previous }}</li>
+				{% endif %}	-->		
+				<li>{{page}}	</li>
+			{% endfor %}
+			<li>{{ pages.next }}</li>
+		</ul>
+		</div>
 	</div>
 </div>
 
