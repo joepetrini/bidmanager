@@ -1,6 +1,6 @@
 <tr>
 	<td>{{r.county}}</td>	
 	<td>{{r.category}}</td>
-	<td>{{r.title}}</td>
+	<td><a href="{{r.object.source.slug}}/bid/{{r.object.id}}">{{r.title}}</a></td>
 	<td>{{r.date|date:"SHORT_DATE_FORMAT"}}</td>
 </tr>

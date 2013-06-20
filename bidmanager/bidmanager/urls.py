@@ -17,24 +17,25 @@ urlpatterns = patterns('',
                        url(r'^about$', 'bids.views.about', name='about'),
                        url(r'^contact$', 'bids.views.contact', name='contact'),
                        url(r'^how-to$', 'bids.views.howto', name='howto'),
-                      (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        url(r'^search$', 'bids.views.search', name='search'),
-                       url(r'^search_status$', 'bids.views.search_status', name='search_status'),                       
+                       url(r'^search_status$', 'bids.views.search_status', name='search_status'),
                        #url(r'^county/(?P<county_slug>[^\/]+)/[^\/]+/(?<bid_id>[\d]+)', 'bids.views.category', name='category'),
                        url(r'^county/(?P<county_slug>[^\/]+)$', 'bids.views.county', name='county'),
                        # url(r'^bidmanager/', include('bidmanager.foo.urls')),
                        # Uncomment the admin/doc line below to enable admin documentation:
                        # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-                       url(r'^backend$', 'backend.views.sources', name='backend'),
+                       url(r'^[a-z|-]+/bid/(?P<bid_id>\d+)/?$', 'bids.views.bid_detail', name='bid_detail'),
+                       url(r'^backend$', 'backend.views.dashboard', name='dashboard'),
                        url(r'^backend/edit/(?P<source_id>[^\/])$', 'backend.views.editcrawl', name='edit'),
                        (r'^profile/login/$', 'profiles.views.login_user'),
+                       (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
                        url(r'^admin/', include(admin.site.urls)),
                        )
 
 
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
+      (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT, 'show_indexes':True}),
     )
 
 

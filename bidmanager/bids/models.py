@@ -138,10 +138,11 @@ class Bid(TimeStampedModel):
 
     orig_id = models.CharField(max_length=1000, null=True, blank=True, 
                                 help_text="Unique ID from src sys",)
+    status = StatusField(default=STATUS.new)
     source = models.ForeignKey('BidSource')
     category = models.ForeignKey('BidCategory', blank=True, null=True)
     title = models.CharField(max_length=1000, blank=True)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, help_text=_("Use markdown syntax"))
     contact_name = models.CharField(max_length=1000, blank=True)
     contact_phone = models.CharField(max_length=1000, blank=True)
     open_date = models.DateTimeField(null=True, blank=True)
@@ -150,7 +151,7 @@ class Bid(TimeStampedModel):
     extra_info = PickledObjectField()
     view_count = models.IntegerField(default=0)
     url = models.CharField(max_length=1000)
-    status = StatusField(default=STATUS.new)
+
     
     objects = models.Manager()
 
@@ -163,6 +164,10 @@ class Bid(TimeStampedModel):
     def get_absolute_url(self):
         return "/%s" % self.id
 
+
+class BidAdmin(admin.ModelAdmin):
+    exclude = ('orig_id', 'source', 'content_hash', 'url', )
+    readonly_fields = ('view_count',)
 """
 
 class Attachment(TimeStampedModel):
@@ -180,4 +185,4 @@ admin.site.register(State)
 admin.site.register(County)
 admin.site.register(BidCategory)
 admin.site.register(BidSource, BidSourceAdmin)
-admin.site.register(Bid)
+admin.site.register(Bid, BidAdmin)

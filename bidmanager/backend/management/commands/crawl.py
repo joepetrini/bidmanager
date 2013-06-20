@@ -1,4 +1,4 @@
-import importlib
+import importlib, pkgutil
 import logging
 from django.core.management.base import BaseCommand, CommandError
 from bids.models import Bid, BidSource
@@ -12,51 +12,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if len(args) == 1:
-            #sources = BidSource.objects.filter(slug=args[0])
             importlib.import_module("backend.crawlers.%s" % args[0])
         else:
-            sources = BidSource.objects.all()
-            for source in sources:
-                self.p("Crawling %s" % source.slug)
-                importlib.import_module("backend.crawlers.%s" % source.slug)
-
-            #importlib.import_module("backend.crawlers.%s" % args[0]
-
-            """
-            if source.crawl_code <> "":
-                self.p(source)
-                r1 = urlparse.urlsplit(source.url)
-                base_url = r1.scheme + '://' + r1.netloc
-                html = requests.get(source.url).text
-                tree   = etree.parse(StringIO(html), parser)
-                soup = BeautifulSoup(html)
-                with open('tmp.py','w') as f:
-                    f.write
-                    f.write(source.crawl_code)
-                mymod = importlib.import_module('tmp')
-                #res = mymod.a(tree)
-                #self.p("Result: %s" % res)
-
-                for tr in soup.find_all('table')[3].find_all('tr')[1:]:
-                    #self.p(tr)
-                    tds = tr.find_all('td')
-                    title = tds[0].contents[0].string
-                    opendate = tds[1].contents[0].string
-                    link = base_url + tds[2].find_all('a')[0].get('href')
-                    self.p(link)
-            """
-            """
-            if source.crawl_code is not None:
-            #with open('tmp.py','w') as f:
-            #    f.write
-            #    f.write(source.crawl_code)
-            try:
-                #from tmp import crawlsite
-                bids = []
-                #html = requests.get(source.url).text
-                #tree   = etree.parse(StringIO(html), parser)
-                #result = crawlsite(tree)
-                #return result
-            except:
-                self.p("error")
-            """
+            for p in pkgutil.walk_packages('backend.crawlers'):
+                if 'backend.crawlers.' in str(p):
+                    print "Crawling %s" % p[1]
+                    importlib.import_module(str(p[1]))

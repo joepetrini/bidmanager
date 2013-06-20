@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}Search Bids{% endblock %}
+{% load markup %}
+{% block title %}{{bid.title}} - {{bid.catetory}} - {{bid.source.county}}{% endblock %}
 {% block onready %}
 {% endblock %}
 {% block content %}
 
 <div class="row">
-	<h3>Bid Detail</h3>	
+	<div class="span10 offset1">
+	<h3>Bid Detail</h3>
+	<strong>{{bid.title}}</strong>
+	<hr>
+	<p class="bid_detail">
+		{{bid.description|markdown:"safe"}}
+	</p>
+	</div>
 </div>
 
 
