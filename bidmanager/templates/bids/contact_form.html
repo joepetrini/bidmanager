@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block title %}Contact Us{% endblock %}
+{% block onready %}$('#id_name').focus();{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="span10">
+            <h1>Send an email</h1>
+            <form method="post" action="">
+            {{ form|bootstrap }}
+            {% csrf_token %}
+            <input type="submit" value="Submit"/>
+        	</form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls import patterns, include, url
 from django.conf import settings
+from bids.views import ContactFormView
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -15,7 +16,8 @@ sitemaps = {
 urlpatterns = patterns('',
                        url(r'^$', 'bids.views.home', name='home'),
                        url(r'^about$', 'bids.views.about', name='about'),
-                       url(r'^contact$', 'bids.views.contact', name='contact'),
+                       #url(r'^contact$', 'bids.views.contact', name='contact'),
+                       url(r'^contact$', ContactFormView.as_view(), name='contact'),
                        url(r'^how-to$', 'bids.views.howto', name='howto'),
                        url(r'^search$', 'bids.views.search', name='search'),
                        url(r'^search_status$', 'bids.views.search_status', name='search_status'),

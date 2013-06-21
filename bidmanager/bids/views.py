@@ -1,9 +1,11 @@
 import logging
 from django.shortcuts import render, get_object_or_404
+from django.core.mail import send_mail
+from django.views.generic import FormView
 from haystack.query import SearchQuerySet
 from haystack.inputs import AutoQuery, Exact, Clean
 from django.http import HttpResponse
-from .forms import SearchForm
+from .forms import SearchForm, ContactForm
 from .models import *
 
 #from django.contrib.auth import get_user_model
@@ -17,8 +19,25 @@ def about(request):
     return render(request, 'bids/about.html', {'counties': counties, 'u': user})
 
 
+class ContactFormView(FormView):
+    form_class = ContactForm
+    template_name = "bids/contact_form.html"
+    success_url = '/email-sent/'
+
+    def form_valid(self, form):
+        message = "{name} / {email} said: ".format(
+            name=form.cleaned_data.get('name'),
+            email=form.cleaned_data.get('email'))
+        message += "\n\n{0}".format(form.cleaned_data.get('message'))
+        send_mail(
+            subject=form.cleaned_data.get('subject').strip(),
+            message=message,
+            from_email='contact-form@myapp.com',
+            recipient_list=[settings.LIST_OF_EMAIL_RECIPIENTS],
+        )
+        return super(ContactFormView, self).form_valid(form)
+
 def contact(request):
-    """Contact page"""
     user = request.user if request.user.is_authenticated() else None
     return render(request, 'bids/contact.html', {'u': user})
 

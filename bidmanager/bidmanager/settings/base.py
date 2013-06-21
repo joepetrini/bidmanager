@@ -135,6 +135,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.markup',
     'haystack',
+    'bootstrapform',
+    #'crispy_forms',
+    'floppyforms',    
     'endless_pagination',
     'profiles',
     # Uncomment the next line to enable the admin:
