@@ -7,9 +7,11 @@ class FrontendMiddleware(object):
         request_url = request.build_absolute_uri(request.get_full_path())
         host = request.META.get('HTTP_HOST').replace("www.","")
         if settings.DEBUG:
-            request.state_filter = FrontendSite.objects.all()[0].state.id  
+            request.site_name = FrontendSite.objects.all()[0]
+            request.state_filter = request.site_name.state.id
         else:
-            request.state_filter = FrontendSite.objects.get(url=host).state.id
+            request.site_name = FrontendSite.objects.get(url=host)
+            request.state_filter = request.site_filter.state.id
 
 
 class TimezoneMiddleware(object):

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load markup %}
-{% block title %}{{bid.title}} - {{bid.catetory}} - {{bid.source.county}}{% endblock %}
+{% block title %}{{bid.title}} - {{bid.catetory}} - {{bid.source.county}}.{% endblock %}
 {% block metadesc %}{{bid.title}}.  {{bid.meta_description}}{% endblock %}
 {% block metakey%}{{bid.source.county.state}},{{bid.source.county}},{{bid.source}},bids,rfps,proposals,goverment,municipal,{{bid.title}}{% endblock %}
 {% block onready %}

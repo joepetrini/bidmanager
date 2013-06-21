@@ -125,7 +125,7 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
-    #'context_processors.user',
+    'context_processors.bids_context',
 )
 
 INSTALLED_APPS = (

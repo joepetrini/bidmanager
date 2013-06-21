@@ -1,4 +1,5 @@
 #import datetime
+from django.conf import settings
 from haystack import indexes
 from .models import Bid, BidSource, BidCategory, County
 
@@ -19,5 +20,7 @@ class BidIndex(indexes.SearchIndex, indexes.Indexable):
         return Bid
 
     def index_queryset(self, using=None):
-        return self.get_model().objects.all()
-        #return self.get_model().objects.filter(status=Bid.STATUS.published)
+        if settings.DEBUG:
+            return self.get_model().objects.all()
+        else:
+            return self.get_model().objects.published().all()

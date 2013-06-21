@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} - {{request.site_name}}</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta name="keywords" content="{% block metakey %}{% endblock %}" /> 
     <meta name="description" content="{% block metadesc %}{% endblock %}" /> 
@@ -42,9 +42,15 @@
             <li class="{% ifequal request.path "/about" %}active{% endifequal %}"><a href="/about">About</a></li>
             <li class="{% ifequal request.path "/contact" %}active{% endifequal %}"><a href="/contact">Contact</a></li>
           </ul>
-        
       </div>
-    </div><!-- /.navbar -->
+        {% if request.user.is_admin %}
+        <!--  Site info for admins -->
+          <a href="/admin">admin site</a> 
+          {% if debug %}
+           - DEBUG MODE IS ON, all bids (not just published) will be shown
+          {% endif %}
+        {% endif %}      
+    </div><!-- /.navbar -->    
   </div>
 
 
@@ -52,11 +58,7 @@
     {% block content %}{% endblock %}
     <!-- Path: {{request.path}} -->
 </div> <!-- /container -->
-{% if request.user.is_admin %}
-<div class="offset2">
-<a style="color:red" href="/admin">admin</a>
-</div>
-{% endif %}
+
 
 </body>
 </html>

@@ -201,6 +201,7 @@ class Attachment(TimeStampedModel):
     kind = models.CharField(choices=TYPE, max_length=20)
 """
 
+admin.site.register(FrontendSite)
 admin.site.register(State)
 admin.site.register(County)
 admin.site.register(BidCategory)

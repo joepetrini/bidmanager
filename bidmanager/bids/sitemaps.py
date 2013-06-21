@@ -7,7 +7,7 @@ class BidSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
-        return Bid.objects.all()
+        return Bid.objects.published().all()
 
     def lastmod(self, obj):
         return obj.modified

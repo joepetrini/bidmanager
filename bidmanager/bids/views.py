@@ -15,10 +15,9 @@ from profiles.models import BidsUser
 
 def about(request):
     """About Us page"""
-    user = request.user if request.user.is_authenticated() else None
     #sources = BidSource.objects.filter(county__state__id=request.state_filter).order_by('county')
     counties = County.objects.select_related().filter(state__id=request.state_filter).order_by('name')
-    return render(request, 'bids/about.html', {'counties': counties, 'u': user})
+    return render(request, 'bids/about.html', {'counties': counties})
 
 
 class ContactFormView(FormView):
@@ -42,17 +41,15 @@ class ContactFormView(FormView):
         return super(ContactFormView, self).form_valid(form)
 
 def email_sent(request):
-    user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/email_sent.html', {'u': user})
+    return render(request, 'bids/email_sent.html', {})
 
 
 def county(request, county_slug):
     """County page"""
-    user = request.user if request.user.is_authenticated() else None    
     county = get_object_or_404(County, slug=county_slug)
     bids = Bid.objects.published().filter(source__county=county)
     print "LSDLNF : %s" % len(bids)
-    return render(request, 'bids/county.html', {'u': user, 'county':county, 'bids':bids})
+    return render(request, 'bids/county.html', {'county':county, 'bids':bids})
 
 def location(request, location):
     """Location page"""
@@ -63,14 +60,12 @@ def location(request, location):
 
 def home(request):
     """Home page"""
-    user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/home.html', {'u': user})
+    return render(request, 'bids/home.html', {})
 
 
 def howto(request):
     """HowTo page"""
-    user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/howto.html', {'u': user})
+    return render(request, 'bids/howto.html', {})
 
 
 def bid_detail(request, bid_id):
