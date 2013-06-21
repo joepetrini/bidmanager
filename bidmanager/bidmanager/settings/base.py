@@ -2,6 +2,8 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 from unipath import Path
 #from os.path import join, abspath, dirname
 
+EMAIL_FROM = "noreply@jerseybids.com"
+
 AUTH_USER_MODEL = 'profiles.BidsUser'
 
 #here = lambda *x: join(abspath(dirname(__file__)), *x)
@@ -123,6 +125,7 @@ HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
+    #'context_processors.user',
 )
 
 INSTALLED_APPS = (
@@ -134,14 +137,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.markup',
+    'django.contrib.admin',    
     'haystack',
     'bootstrapform',
-    #'crispy_forms',
     'floppyforms',    
     'endless_pagination',
+    #'south',    
     'profiles',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
     'bids',
     'backend',
     # Uncomment the next line to enable admin documentation:

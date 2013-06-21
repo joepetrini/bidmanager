@@ -4,9 +4,9 @@
 {% block onready %}$('#id_name').focus();{% endblock %}
 {% block content %}
     <div class="row">
-        <div class="span10">
+        <div class="span6 offset3">
             <h1>Send an email</h1>
-            <form method="post" action="">
+            <form method="post" action="" class="contact">
             {{ form|bootstrap }}
             {% csrf_token %}
             <input type="submit" value="Submit"/>

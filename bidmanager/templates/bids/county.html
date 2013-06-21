@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{location}} Bids{% endblock %}
+{% block onready %}	
+{% endblock %}
+{% block content %}
+
+<div class="row">
+	<div class="span8 offset1">
+
+		<h2>{{county}} Bids</h2>
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+			<tr>
+				<th width="15%">County</th>
+				<th width="15%">Category</th>
+				<th width="60%">Title</th>
+				<th width="10%">Date</th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for r in bids %}
+				{% include 'bids/_result.html' %}
+			{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
+
+{% endblock %}

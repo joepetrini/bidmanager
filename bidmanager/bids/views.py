@@ -5,8 +5,10 @@ from django.views.generic import FormView
 from haystack.query import SearchQuerySet
 from haystack.inputs import AutoQuery, Exact, Clean
 from django.http import HttpResponse
+from django.conf import settings
 from .forms import SearchForm, ContactForm
 from .models import *
+from profiles.models import BidsUser
 
 #from django.contrib.auth import get_user_model
 
@@ -25,28 +27,39 @@ class ContactFormView(FormView):
     success_url = '/email-sent/'
 
     def form_valid(self, form):
+        users = BidsUser.objects.filter(is_admin=True).values('email')
+        mail_to = [u['email'] for u in users]
         message = "{name} / {email} said: ".format(
             name=form.cleaned_data.get('name'),
             email=form.cleaned_data.get('email'))
         message += "\n\n{0}".format(form.cleaned_data.get('message'))
         send_mail(
-            subject=form.cleaned_data.get('subject').strip(),
+            subject="JerseyBids contact - %s " % form.cleaned_data.get('subject').strip(),
             message=message,
-            from_email='contact-form@myapp.com',
-            recipient_list=[settings.LIST_OF_EMAIL_RECIPIENTS],
+            from_email=settings.EMAIL_FROM,
+            recipient_list=mail_to,
         )
         return super(ContactFormView, self).form_valid(form)
 
-def contact(request):
+def email_sent(request):
     user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/contact.html', {'u': user})
+    return render(request, 'bids/email_sent.html', {'u': user})
 
 
 def county(request, county_slug):
-    """Contact page"""
-    user = request.user if request.user.is_authenticated() else None
-    return render(request, 'bids/contact.html', {'u': user})
+    """County page"""
+    user = request.user if request.user.is_authenticated() else None    
+    county = get_object_or_404(County, slug=county_slug)
+    bids = Bid.objects.published().filter(source__county=county)
+    print "LSDLNF : %s" % len(bids)
+    return render(request, 'bids/county.html', {'u': user, 'county':county, 'bids':bids})
 
+def location(request, location):
+    """Location page"""
+    #ser = request.user if request.user.is_authenticated() else None
+    location = get_object_or_404(BidSource, pk=location)
+    bids = Bid.objects.published().filter(source=location)
+    return render(request, 'bids/location.html', {'location':location, 'bids': bids})
 
 def home(request):
     """Home page"""

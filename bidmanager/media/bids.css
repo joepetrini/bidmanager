@@ -1,6 +1,5 @@
 body {background-color: #fff}
-
-      
+ 
 input[type='checkbox'] {margin:0px 5px 0 0;}
 
 .divider {
@@ -27,7 +26,7 @@ div.facet {
   line-height: 16px;
   margin-bottom:3px;
  }
- div.facet label, input {float:left; line-height: 16px;}
+ div.facet label, div.facet input {float:left; line-height: 16px;}
 
 div.bid h1 {
   font-size:22px;
@@ -56,6 +55,9 @@ div.bid_description h2{
   line-height: 22px;
   margin-bottom:3px; 
 }
+
+/* Contact Form */
+.contact textarea {width:400px;}
 
 
 /* Customize the navbar links to be fill the entire space of the .navbar */

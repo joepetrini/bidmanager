@@ -5,6 +5,7 @@
     "fields": {
         "modified": "2013-05-22T14:35:49.258Z", 
         "name": "New Jersey", 
+        "slug": "new-jersey",
         "created": "2013-05-22T14:35:49.258Z"
     }
 },

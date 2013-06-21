@@ -99,8 +99,10 @@ INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
 INTERNAL_IPS = ('127.0.0.1','0.0.0.0')
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 INSTALLED_APPS += ('devserver',)
+DEVSERVER_TRUNCATE_SQL = False
 
 import os
+EMAIL_FROM = os.environ.get('GMAIL')
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('GMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('GMAILPASS')

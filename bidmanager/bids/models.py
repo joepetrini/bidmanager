@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
 from django.contrib import admin
+from django.conf import settings
 from django.forms import TextInput, Textarea
 from django.utils.timezone import utc
 from django.utils.translation import ugettext as _
@@ -12,6 +13,7 @@ from picklefield.fields import PickledObjectField
 
 class State(TimeStampedModel):
     name = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
 
     def __unicode__(self):
         return self.name
@@ -117,6 +119,9 @@ class BidSource(TimeStampedModel):
     def __unicode__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return "/location/%s/%s-%s-%s" % (self.id, self.county.state.slug, self.county.slug, self.slug)
+
     def done_crawl(self, success, message, hash):
         now = datetime.utcnow().replace(tzinfo=utc)
         self.last_crawled = now
@@ -127,6 +132,13 @@ class BidSource(TimeStampedModel):
 class BidSourceAdmin(admin.ModelAdmin):
     exclude = ('last_crawled','crawl_hash','crawl_message','crawl_status',)
 
+
+class BidManager(models.Manager):
+    def published(self):
+        if settings.DEBUG:
+            return self.get_query_set()
+        else:
+            return self.get_query_set().filter(status=Bid.STATUS.published)
 
 class Bid(TimeStampedModel):
 
@@ -154,7 +166,7 @@ class Bid(TimeStampedModel):
     url = models.CharField(max_length=1000)
 
     
-    objects = models.Manager()
+    objects = BidManager()#models.Manager()
 
     class Meta:
         db_table = 'bid'
@@ -163,7 +175,7 @@ class Bid(TimeStampedModel):
         return "%s - %s - %s" % (self.source, self.title[:60], self.status)
 
     def get_absolute_url(self):
-        return "/%s" % self.id
+        return "/%s/bid/%s" % (self.source.county.slug, self.id)
 
 
 class BidAdmin(admin.ModelAdmin):
@@ -173,6 +185,9 @@ class BidAdmin(admin.ModelAdmin):
         models.CharField: {'widget': TextInput(attrs={'size':'150'})},
         models.TextField: {'widget': Textarea(attrs={'rows':25, 'cols':120})},
     }
+
+
+
 """
 
 class Attachment(TimeStampedModel):

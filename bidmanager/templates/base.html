@@ -3,10 +3,12 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="{% block metakey %}{% endblock %}" /> 
+    <meta name="description" content="{% block metadesc %}{% endblock %}" /> 
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">    
     <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>    
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link href="{{MEDIA_URL}}bids2.css" rel="stylesheet" />
+    <link href="{{MEDIA_URL}}bids.css" rel="stylesheet" />
     <script type="text/javascript" src="{{MEDIA_URL}}bids.js"></script>
     <style>
       body {
@@ -50,7 +52,11 @@
     {% block content %}{% endblock %}
     <!-- Path: {{request.path}} -->
 </div> <!-- /container -->
-
+{% if request.user.is_admin %}
+<div class="offset2">
+<a style="color:red" href="/admin">admin</a>
+</div>
+{% endif %}
 
 </body>
 </html>

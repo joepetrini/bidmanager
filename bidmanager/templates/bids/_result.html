@@ -1,6 +1,6 @@
 <tr class="clickable">
-	<td>{{r.county}}</td>	
+	<td>{{r.source.county}}</td>	
 	<td>{{r.category}}</td>
-	<td><a href="{{r.object.source.slug}}/bid/{{r.object.id}}">{{r.title}}</a></td>
+	<td><a href="{{r.get_absolute_url}}">{{r.title}}</a></td>
 	<td>{{r.date|date:"SHORT_DATE_FORMAT"}}</td>
 </tr>
