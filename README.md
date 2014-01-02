@@ -6,6 +6,7 @@ A Django based project for managing bids and rfp's
 Requirements
 ------------
 * Python 2.6+
+* Whoosh + haystack for search engine
 * See requirements.txt for virtualenv packages
 
 Project Structure
@@ -14,7 +15,8 @@ Project Structure
 Django app that end users and system admins interact with to manage bids
 
 ### Back End Crawling Engine ###
-Sample crawling engines to pull bids in from external sites
+Sample crawling engines to pull bids in from external site.
+Crawling kicked off via mgmt command `manage.py crawl`
 
 ### Sample sites ###
 Sample sites to crawl against
